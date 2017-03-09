@@ -1,4 +1,4 @@
-import ../rec/rec_act
+import ../recuperation/recuperation_activites
 
 def send_act(cursor):
 

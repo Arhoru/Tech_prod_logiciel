@@ -1,4 +1,4 @@
-import ../rec/rec_instal
+import ../recuperation/recuperation_installations
 
 def send_instal(cursor):
 

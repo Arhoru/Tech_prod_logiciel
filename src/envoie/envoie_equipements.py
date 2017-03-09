@@ -1,4 +1,4 @@
-import ../rec/rec_equ
+import ../recuperation/recuperation_equipements
 
 def send_equ(cursor):
 
