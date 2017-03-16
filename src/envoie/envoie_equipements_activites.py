@@ -1,5 +1,4 @@
-import recuperation
-from recuperation import recuperation_equipements_activites
+#import recuperation.recuperation_equipements_activites
 
 def envoie_equipements_activites(cursor):
 

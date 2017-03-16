@@ -1,5 +1,4 @@
-import recuperation
-from recuperation import recuperation_installations
+#import recuperation.recuperation_installations
 
 def envoie_installations(cursor):
 

@@ -4,13 +4,12 @@
 #           https://dev.mysql.com/doc/connector-python/en/connector-python-example-cursor-transaction.html
 
 import csv
-from mysql import connector
-from envoie import envoie_installations
-from envoie import envoie_activites
-from envoie import envoie_equipements
-from envoie import envoie_equipements_activites
+import mysql.connector
+import envoie
+import envoie.recuperation
 
-connexion = mysql.connector.connect(user='E155382T', database='E155382T', password='E155382T')
+connexion = mysql.connector.connect(user='E155382T', database='E155382T', password='E155382T', host='http://infoweb/phpMyAdmin')
+#error 2003 -> probleme de firewall avec le port 3306 utilise par defaut?
 cursor = connexion.cursor()
 
 envoie_installations(cursor)
