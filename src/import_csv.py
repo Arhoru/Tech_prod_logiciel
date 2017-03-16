@@ -8,8 +8,8 @@ import mysql.connector
 import envoie
 import envoie.recuperation
 
-connexion = mysql.connector.connect(user='E155382T', database='E155382T', password='E155382T', host='http://infoweb/phpMyAdmin')
-#error 2003 -> probleme de firewall avec le port 3306 utilise par defaut?
+connexion = mysql.connector.connect(user='E155382T', database='E155382T', password='E155382T')
+#error 2003 -> probleme de firewall avec le port 3306 utilise par defaut? => connexion tunnelle (avec ssh)?
 cursor = connexion.cursor()
 
 envoie_installations(cursor)
