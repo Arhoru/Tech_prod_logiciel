@@ -3,19 +3,20 @@
 #           https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html
 #           https://dev.mysql.com/doc/connector-python/en/connector-python-example-cursor-transaction.html
 
-import mysql.connector
-import send/send_instal
-import send/send_act
-import send/send_equ
-import send/send_equ_act
+import csv
+from mysql import connector
+from envoie import envoie_installations
+from envoie import envoie_activites
+from envoie import envoie_equipements
+from envoie import envoie_equipements_activites
 
 connexion = mysql.connector.connect(user='E155382T', database='E155382T', password='E155382T')
 cursor = connexion.cursor()
 
-send_instal(cursor)
-send_equ(cursor)
-send_act(cursor)
-send_equ_act(cursor)
+envoie_installations(cursor)
+envoie_equipements(cursor)
+envoie_activites(cursor)
+envoie_equipements_activites(cursor)
 
 connexion.commit()
 

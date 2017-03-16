@@ -1,11 +1,12 @@
-import ../recuperation/recuperation_installations
+import recuperation
+from recuperation import recuperation_installations
 
-def send_instal(cursor):
+def envoie_installations(cursor):
 
-    add_instal = ("INSERT INTO INSTALLATION "
-                 "(NUMERO, NOM, ADRESSE, CODEPOSTAL, VILLE) "
-                 "VALUES (%d, %s, %s, %d, %s)")
+    requete_ajout_installation = (  "INSERT INTO INSTALLATION "
+                                    "(NUMERO, NOM, ADRESSE, CODEPOSTAL, VILLE) "
+                                    "VALUES (%d, %s, %s, %d, %s)")
 
-    info_instal = rec_instal.recup
-    for row in info_instal:
-        cursor.execute(add_instal, row)
+    liste_installations = recuperation_installations.recuperer
+    for row in liste_installations:
+        cursor.execute(requete_ajout_installation, row)

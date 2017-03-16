@@ -1,9 +1,8 @@
-import csv
-
-def recup():
+def recuperer():
     with open('csv_file/equipements_activites.csv') as csvfile:
         spamreader = csv.reader(csvfile)
         next(spamreader)
-        info_act_equ = []
+        liste_activites = []
         for row in spamreader:
-            info_act_equ.append([row[2], row[4]])
+            liste_activites.append([row[4], row[5]])
+        return liste_activites

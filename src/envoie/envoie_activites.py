@@ -1,11 +1,12 @@
-import ../recuperation/recuperation_activites
+import recuperation
+from recuperation import recuperation_activites
 
-def send_act(cursor):
+def envoie_activites(cursor):
 
-    add_act = ("INSERT INTO ACTIVITE "
-                 "(NUMERO, NOM) "
-                 "VALUES (%d, %s)")
+    requete_ajout_activite = (  "INSERT INTO ACTIVITE "
+                        "(NUMERO, NOM) "
+                        "VALUES (%d, %s)")
 
-    info_act = rec_act.recup
-    for row in info_act:
-        cursor.execute(add_act, row)
+    liste_activites = recuperation_activites.recuperer
+    for row in liste_activites:
+        cursor.execute(requete_ajout_activite, row)

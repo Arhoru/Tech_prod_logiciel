@@ -1,11 +1,12 @@
-import ../recuperation/recuperation_equipements
+import recuperation
+from recuperation import recuperation_equipements
 
-def send_equ(cursor):
+def envoie_equipements(cursor):
 
-    add_equ = ("INSERT INTO EQUIPEMENT "
-                 "(NUMERO, NOM, NUMERO_INSTALLATION, LATITUDE, LONGITUDE) "
-                 "VALUES (%d, %s, %d, %f, %f)")
+    requete_ajout_equipements = (   "INSERT INTO EQUIPEMENT "
+                            "(NUMERO, NOM, NUMERO_INSTALLATION, LATITUDE, LONGITUDE) "
+                            "VALUES (%d, %s, %d, %f, %f)")
 
-    info_equ = rec_equ.recup
-    for row in info_equ:
-        cursor.execute(add_equ, row)
+    liste_equipements = recuperation_equipements.recuperer
+    for row in liste_equipements:
+        cursor.execute(requete_ajout_equipements, row)
