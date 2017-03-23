@@ -1,19 +1,23 @@
 #### Services REST à mettre en place
 
 - liste installation selon ville  
-      SELECT * FROM INSTALLATION
-			WHERE VILLE = ville
-- liste installation selon une activité  
-      SELECT * FROM INSTALLATION
-			WHERE NUMERO = (
-				SELECT NUMERO_INSTALLATION, NUMERO
-				FROM EQUIPEMENT
-				WHERE NUMERO = (
-					SELECT *
-					FROM EQUIPEMENT_ACTIVITE
-					WHERE NUMERO_ACTIVITE = activite
-					)
-				)
+
+
+      SELECT * FROM INSTALLATION  
+      WHERE VILLE = ville
+- liste installation selon une activité 
+
+
+      SELECT * FROM INSTALLATION  
+      WHERE NUMERO = (    
+      SELECT NUMERO_INSTALLATION, NUMERO  
+        FROM EQUIPEMENT  
+        WHERE NUMERO = (  
+	  SELECT *  
+	  FROM EQUIPEMENT_ACTIVITE  
+	  WHERE NUMERO_ACTIVITE = activite  
+        )  
+      )  
 - suggestion* de ville
 - suggestion* d'activité  
 
