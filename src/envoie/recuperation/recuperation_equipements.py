@@ -1,3 +1,5 @@
+import csv
+
 def recuperer():
     with open('csv_file/equipements.csv') as csvfile:
         spamreader = csv.reader(csvfile)

@@ -3,21 +3,27 @@
 #           https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html
 #           https://dev.mysql.com/doc/connector-python/en/connector-python-example-cursor-transaction.html
 
-import csv
-import mysql.connector
-import envoie
-import envoie.recuperation
+import sqlite3
+from envoie import envoie_installations
+from envoie import envoie_equipements
+from envoie import envoie_activites
+from envoie import envoie_equipements_activites
 
-connexion = mysql.connector.connect(user='E155382T', database='E155382T', password='E155382T')
-#error 2003 -> probleme de firewall avec le port 3306 utilise par defaut? => connexion tunnelle (avec ssh)?
-cursor = connexion.cursor()
+conn = sqlite3.connect('ma_base.db')
+conn = sqlite3.connect(':memory:')
+cursor = conn.cursor()
 
-envoie_installations(cursor)
-envoie_equipements(cursor)
-envoie_activites(cursor)
-envoie_equipements_activites(cursor)
+cursor.execute("""CREATE TABLE IF NOT EXISTS INSTALLATION(NUMERO INTEGER PRIMARY KEY UNIQUE, NOM TEXT, ADRESSE TEXT, CODEPOSTAL INTEGER, VILLE TEXT)""")
+cursor.execute("""CREATE TABLE IF NOT EXISTS EQUIPEMENT(NUMERO INTEGER PRIMARY KEY UNIQUE, NOM TEXT, NUMERO_INSTALLATION INTEGER, LATITUDE DECIMAL(3,2), LONGITUDE DECIMAL(3,2))""")
+cursor.execute("""CREATE TABLE IF NOT EXISTS ACTIVITE(NUMERO INTEGER PRIMARY KEY, NOM TEXT)""")
+cursor.execute("""CREATE TABLE IF NOT EXISTS EQUIPEMENT_ACTIVITE(NUMERO_EQUIPEMENT INTEGER, NUMERO_ACTIVITE INTEGER)""")
+conn.commit()
 
-connexion.commit()
+envoie_installations.envoie_installations(cursor)
+#envoie_equipements.envoie_equipements(cursor)
+#envoie_activites.envoie_activites(cursor)
+envoie_equipements_activites.envoie_equipements_activites(cursor)
 
-cursor.close()
-connexion.close()
+conn.commit()
+
+conn.close()
