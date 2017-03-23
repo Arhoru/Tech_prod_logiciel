@@ -13,9 +13,9 @@
       SELECT NUMERO_INSTALLATION, NUMERO  
         FROM EQUIPEMENT  
         WHERE NUMERO = (  
-	  SELECT *  
-	  FROM EQUIPEMENT_ACTIVITE  
-	  WHERE NUMERO_ACTIVITE = activite  
+          SELECT *  
+          FROM EQUIPEMENT_ACTIVITE  
+          WHERE NUMERO_ACTIVITE = activite  
         )  
       )  
 - suggestion* de ville
