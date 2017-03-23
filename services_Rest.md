@@ -19,8 +19,8 @@
 
 *(suggestion -> completion dans champ recherche)
 
-plan:
-requete SQL pour executer ces services
-code python qui utilise les requetes
-:test:
-appli web qui utilise le code en python
+**plan:**
+- requete SQL pour executer ces services
+- code python qui utilise les requetes
+- :test:
+- appli web qui utilise le code en python
