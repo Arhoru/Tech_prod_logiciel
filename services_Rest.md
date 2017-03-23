@@ -3,7 +3,7 @@
 - liste installation selon ville  
       SELECT * FROM INSTALLATION
 			WHERE VILLE = ville
-- liste installation selon une activité
+- liste installation selon une activité  
       SELECT * FROM INSTALLATION
 			WHERE NUMERO = (
 				SELECT NUMERO_INSTALLATION, NUMERO
