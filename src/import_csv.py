@@ -15,13 +15,13 @@ cursor = conn.cursor()
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS INSTALLATION(NUMERO INTEGER PRIMARY KEY UNIQUE, NOM TEXT, ADRESSE TEXT, CODEPOSTAL INTEGER, VILLE TEXT)""")
 cursor.execute("""CREATE TABLE IF NOT EXISTS EQUIPEMENT(NUMERO INTEGER PRIMARY KEY UNIQUE, NOM TEXT, NUMERO_INSTALLATION INTEGER, LATITUDE DECIMAL(3,2), LONGITUDE DECIMAL(3,2))""")
-cursor.execute("""CREATE TABLE IF NOT EXISTS ACTIVITE(NUMERO INTEGER PRIMARY KEY, NOM TEXT)""")
+cursor.execute("""CREATE TABLE IF NOT EXISTS ACTIVITE(NUMERO INTEGER PRIMARY KEY UNIQUE, NOM TEXT)""")
 cursor.execute("""CREATE TABLE IF NOT EXISTS EQUIPEMENT_ACTIVITE(NUMERO_EQUIPEMENT INTEGER, NUMERO_ACTIVITE INTEGER)""")
 conn.commit()
 
 envoie_installations.envoie_installations(cursor)
-#envoie_equipements.envoie_equipements(cursor)
-#envoie_activites.envoie_activites(cursor)
+envoie_equipements.envoie_equipements(cursor)
+envoie_activites.envoie_activites(cursor)
 envoie_equipements_activites.envoie_equipements_activites(cursor)
 
 conn.commit()
