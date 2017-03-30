@@ -1,6 +1,6 @@
-from envoie.recuperation import recuperation_activites
+from envoi.recuperation import recuperation_activites
 
-def envoie_activites(cursor):
+def envoi_activites(cursor):
 
     requete_ajout_activite = ("""INSERT INTO ACTIVITE(NUMERO, NOM) VALUES (?, ?)""")
 

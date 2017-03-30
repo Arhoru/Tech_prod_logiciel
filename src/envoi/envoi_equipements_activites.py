@@ -1,6 +1,6 @@
-from envoie.recuperation import recuperation_equipements_activites
+from envoi.recuperation import recuperation_equipements_activites
 
-def envoie_equipements_activites(cursor):
+def envoi_equipements_activites(cursor):
 
     requete_ajout_equipements_activites = ("""INSERT INTO EQUIPEMENT_ACTIVITE(NUMERO_EQUIPEMENT, NUMERO_ACTIVITE) VALUES (?, ?)""")
 

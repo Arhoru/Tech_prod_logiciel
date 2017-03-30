@@ -1,6 +1,6 @@
-from envoie.recuperation import recuperation_installations
+from envoi.recuperation import recuperation_installations
 
-def envoie_installations(cursor):
+def envoi_installations(cursor):
 
     requete_ajout_installation = ("""INSERT INTO INSTALLATION(NUMERO, NOM, ADRESSE, CODEPOSTAL, VILLE) VALUES (?, ?, ?, ?, ?)""")
 
