@@ -10,7 +10,6 @@ from envoi import envoi_activites
 from envoi import envoi_equipements_activites
 
 conn = sqlite3.connect('ma_base.db')
-conn = sqlite3.connect(':memory:')
 cursor = conn.cursor()
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS INSTALLATION(NUMERO INTEGER PRIMARY KEY UNIQUE, NOM TEXT, ADRESSE TEXT, CODEPOSTAL INTEGER, VILLE TEXT)""")
