@@ -4,29 +4,28 @@
 #           https://dev.mysql.com/doc/connector-python/en/connector-python-example-cursor-transaction.html
 
 import sqlite3
-import os
-import os.path
+
 from envoi import envoi_installations
 from envoi import envoi_equipements
 from envoi import envoi_activites
 from envoi import envoi_equipements_activites
 
-if os.path.isfile("ma_base.db"):
-    os.remove('ma_base.db')
-conn = sqlite3.connect('ma_base.db')
-cursor = conn.cursor()
+def fonction_import_csv():
 
-cursor.execute("""CREATE TABLE IF NOT EXISTS INSTALLATION(NUMERO INTEGER PRIMARY KEY UNIQUE, NOM TEXT, ADRESSE TEXT, CODEPOSTAL INTEGER, VILLE TEXT)""")
-cursor.execute("""CREATE TABLE IF NOT EXISTS EQUIPEMENT(NUMERO INTEGER PRIMARY KEY UNIQUE, NOM TEXT, NUMERO_INSTALLATION INTEGER, LATITUDE REAL, LONGITUDE REAL)""")
-cursor.execute("""CREATE TABLE IF NOT EXISTS ACTIVITE(NUMERO INTEGER PRIMARY KEY UNIQUE, NOM TEXT)""")
-cursor.execute("""CREATE TABLE IF NOT EXISTS EQUIPEMENT_ACTIVITE(NUMERO_EQUIPEMENT INTEGER, NUMERO_ACTIVITE INTEGER)""")
-conn.commit()
+    conn = sqlite3.connect('ma_base.db')
+    cursor = conn.cursor()
 
-envoi_installations.envoi_installations(cursor)
-envoi_equipements.envoi_equipements(cursor)
-envoi_activites.envoi_activites(cursor)
-envoi_equipements_activites.envoi_equipements_activites(cursor)
+    cursor.execute("""CREATE TABLE IF NOT EXISTS INSTALLATION(NUMERO INTEGER PRIMARY KEY UNIQUE, NOM TEXT, ADRESSE TEXT, CODEPOSTAL INTEGER, VILLE TEXT)""")
+    cursor.execute("""CREATE TABLE IF NOT EXISTS EQUIPEMENT(NUMERO INTEGER PRIMARY KEY UNIQUE, NOM TEXT, NUMERO_INSTALLATION INTEGER, LATITUDE REAL, LONGITUDE REAL)""")
+    cursor.execute("""CREATE TABLE IF NOT EXISTS ACTIVITE(NUMERO INTEGER PRIMARY KEY UNIQUE, NOM TEXT)""")
+    cursor.execute("""CREATE TABLE IF NOT EXISTS EQUIPEMENT_ACTIVITE(NUMERO_EQUIPEMENT INTEGER, NUMERO_ACTIVITE INTEGER)""")
+    conn.commit()
 
-conn.commit()
+    envoi_installations.envoi_installations(cursor)
+    envoi_equipements.envoi_equipements(cursor)
+    envoi_activites.envoi_activites(cursor)
+    envoi_equipements_activites.envoi_equipements_activites(cursor)
 
-conn.close()
+    conn.commit()
+
+    conn.close()

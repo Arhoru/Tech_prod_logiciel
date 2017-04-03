@@ -1,5 +1,5 @@
 import sqlite3
-from src.server.lib.bottle import route, run, debug, template, request, static_file
+from serveur.lib.bottle import route, run, debug, template, request, static_file
 
 
 @route('/installation')
