@@ -1,30 +1,25 @@
 #### Services REST à mettre en place
 
-- liste installation selon ville  
+- la liste des installations d'une ville  
 
 
       SELECT * FROM INSTALLATION  
       WHERE VILLE = ville
-- liste installation selon une activité
+- la liste des installations d'un numero d'activité
 
 
-      SELECT * FROM INSTALLATION  
-      WHERE NUMERO = (
-      SELECT NUMERO_INSTALLATION, NUMERO  
-        FROM EQUIPEMENT  
-        WHERE NUMERO = (  
-          SELECT *  
+      SELECT *  
+      FROM INSTALLATION i1,
+      (SELECT NUMERO_INSTALLATION, NUMERO  
+        FROM EQUIPEMENT e1,
+        (SELECT *  
           FROM EQUIPEMENT_ACTIVITE  
-          WHERE NUMERO_ACTIVITE = activite  
-        )  
-      )  
+          WHERE NUMERO_ACTIVITE = numero_activite  
+        ) e2
+        WHERE e1.NUMERO = e2.NUMERO_EQUIPEMENT
+      ) i2
+      WHERE i1.NUMERO = i2.NUMERO
 - suggestion* de ville
 - suggestion* d'activité  
 
 *(suggestion -> completion dans champ recherche)
-
-**plan:**
-- requete SQL pour executer ces services
-- code python qui utilise les requetes
-- :test:
-- appli web qui utilise le code en python
