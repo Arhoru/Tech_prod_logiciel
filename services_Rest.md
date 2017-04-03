@@ -22,4 +22,4 @@
 - suggestion* de ville
 - suggestion* d'activité  
 
-*(suggestion -> completion dans champ recherche)
+*(suggestion -> completion dans champ recherche )
