@@ -5,12 +5,14 @@
 
 import sqlite3
 import os
+import os.path
 from envoi import envoi_installations
 from envoi import envoi_equipements
 from envoi import envoi_activites
 from envoi import envoi_equipements_activites
 
-os.remove('ma_base.db')
+if os.path.isfile("ma_base.db"):
+    os.remove('ma_base.db')
 conn = sqlite3.connect('ma_base.db')
 cursor = conn.cursor()
 
