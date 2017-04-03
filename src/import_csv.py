@@ -4,11 +4,13 @@
 #           https://dev.mysql.com/doc/connector-python/en/connector-python-example-cursor-transaction.html
 
 import sqlite3
+import os
 from envoi import envoi_installations
 from envoi import envoi_equipements
 from envoi import envoi_activites
 from envoi import envoi_equipements_activites
 
+os.remove('ma_base.db')
 conn = sqlite3.connect('ma_base.db')
 cursor = conn.cursor()
 

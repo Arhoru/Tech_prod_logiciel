@@ -7,6 +7,6 @@ def recuperer():
         liste_activites = []
         for row in spamreader:
             tmp = [row[4], row[5]]
-            if tmp not in liste_activites:
+            if tmp not in liste_activites and len(tmp) != 0:
                 liste_activites.append(tmp)
         return liste_activites
