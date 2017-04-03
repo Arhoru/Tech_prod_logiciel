@@ -8,17 +8,18 @@
 - la liste des installations d'un numero d'activité
 
 
-      SELECT *  
-      FROM INSTALLATION i1,
-      (SELECT NUMERO_INSTALLATION, NUMERO  
+    SELECT i1.*
+      FROM INSTALLATION i1,  
+      (SELECT e1.NUMERO_INSTALLATION
         FROM EQUIPEMENT e1,
-        (SELECT *  
-          FROM EQUIPEMENT_ACTIVITE  
-          WHERE NUMERO_ACTIVITE = numero_activite  
+        (SELECT *
+          FROM EQUIPEMENT_ACTIVITE
+          WHERE NUMERO_ACTIVITE = 2901
         ) e2
         WHERE e1.NUMERO = e2.NUMERO_EQUIPEMENT
       ) i2
-      WHERE i1.NUMERO = i2.NUMERO
+      WHERE i1.NUMERO = i2.NUMERO_INSTALLATION
+
 - suggestion* de ville
 - suggestion* d'activité  
 

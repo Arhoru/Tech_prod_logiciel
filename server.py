@@ -3,6 +3,7 @@ from src.server.lib.bottle import route, run, debug, template, request, static_f
 from src.server.route_activite import *
 from src.server.route_equipement import *
 from src.server.route_installation import *
+from src.server.route_equipement_activite import *
 
 
 @route('/')
